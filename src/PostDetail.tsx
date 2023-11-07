@@ -15,7 +15,7 @@ async function deletePost(postId: any) {
   return response.json();
 }
 
-async function updatePost(postId: any) {
+async function updatePost(postId: number) {
   const response = await fetch(
     `https://jsonplaceholder.typicode.com/postId/${postId}`,
     { method: "PATCH" }
@@ -23,15 +23,17 @@ async function updatePost(postId: any) {
   return response.json();
 }
 
-export function PostDetail(post: any) {
+interface PostDetailProps {
+  post: { userId: number; id: number; title: string; body: string };
+}
+
+export function PostDetail({ post }: PostDetailProps) {
   //useQuery자체로 effect처럼 동작하는?
 
-  const { isLoading, data } = useQuery({
+  const { data } = useQuery({
     queryKey: ["post-detail", post.id],
     queryFn: () => fetchComments(post.id),
   });
-
-  if (isLoading) return <div>Loading...</div>;
 
   return (
     <>

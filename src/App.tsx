@@ -1,16 +1,16 @@
 import "./App.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Posts } from "./Posts";
-
-const queryClient = new QueryClient();
+import { Suspense } from "react";
+import { queryClient } from "./utils/queryClient";
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="App">
+      <Suspense fallback={<div>Loading...</div>}>
         <Posts />
-      </div>
+      </Suspense>
       <ReactQueryDevtools buttonPosition="bottom-left" />
     </QueryClientProvider>
   );
