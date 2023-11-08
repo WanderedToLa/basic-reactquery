@@ -14,6 +14,9 @@ import { PostDetail } from "./PostDetail";
  *
  * Prefetch - 데이터에 캐시 추가, 기본적으로 stale한 상태
  * 캐시가 만료되지 않았다는 가정하에 데이터를 다시 가져오는 도중에 캐시된 데이터를 보여줌
+ *
+ * Mutation - useQuery와 유사 return mutate function querykey가 필요하지 않음
+ * no isFetching , by default no retries
  */
 
 interface Posts {
