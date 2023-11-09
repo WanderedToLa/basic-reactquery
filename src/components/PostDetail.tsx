@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 async function fetchComments(postId: any) {
@@ -41,9 +42,9 @@ export function PostDetail({ post }: PostDetailProps) {
 
   return (
     <>
-      <h3 style={{ color: "blue" }}>{post.title}</h3>
-      <button>Delete</button>
-      <button>Update title</button>
+      <h3 style={{ color: "blue", fontSize: "24px" }}>{post.title}</h3>
+      <Button>Delete</Button>
+      <Button>Update title</Button>
       <p>{post.body}</p>
       <h4>Comments</h4>
       {data?.map((comment: any) => (

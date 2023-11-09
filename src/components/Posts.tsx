@@ -1,8 +1,8 @@
-import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { PostDetail } from "./PostDetail";
 import { usePosts } from "../hooks/usePots";
 import { PostsType } from "~/@types";
+import { Button } from "@chakra-ui/react";
 
 /**
  * isFetching: 비동기 쿼리가 해결되지 않은상태
@@ -39,7 +39,7 @@ export function Posts() {
   return (
     <>
       <ul>
-        {posts?.data.map((post: any) => (
+        {posts?.data.map((post: PostsType) => (
           <li
             key={post.id}
             className="post-title"
@@ -50,23 +50,23 @@ export function Posts() {
         ))}
       </ul>
       <div className="pages">
-        <button
+        <Button
           disabled={currentPage <= 1}
           onClick={() => {
             setCurrentPage((prev) => prev - 1);
           }}
         >
           Previous page
-        </button>
+        </Button>
         <span>Page {currentPage}</span>
-        <button
+        <Button
           disabled={currentPage >= maxPostPage}
           onClick={() => {
             setCurrentPage((prev) => prev + 1);
           }}
         >
           Next page
-        </button>
+        </Button>
       </div>
       <hr />
       {selectedPost && <PostDetail post={selectedPost} />}

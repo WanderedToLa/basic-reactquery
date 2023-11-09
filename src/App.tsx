@@ -5,10 +5,11 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Posts } from "./components/Posts";
 import { Suspense } from "react";
 import { queryClient } from "./utils/queryClient";
+import { customTheme } from "./styles/theme";
 
 function App() {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={customTheme}>
       <QueryClientProvider client={queryClient}>
         <Suspense
           fallback={
