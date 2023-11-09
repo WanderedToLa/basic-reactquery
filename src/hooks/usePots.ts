@@ -4,7 +4,7 @@ import { fetchPosts } from "../server/fetch-post";
 import { PostsType } from "~/@types";
 
 export function usePosts(pageNumber: number) {
-  const { data: posts } = useQuery<PostsType[]>({
+  const { data: posts } = useQuery({
     queryKey: [QUERY_KEYS["posts"], pageNumber],
     queryFn: () => fetchPosts(pageNumber),
   });

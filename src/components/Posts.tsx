@@ -39,7 +39,7 @@ export function Posts() {
   return (
     <>
       <ul>
-        {posts?.map((post: any) => (
+        {posts?.data.map((post: any) => (
           <li
             key={post.id}
             className="post-title"
