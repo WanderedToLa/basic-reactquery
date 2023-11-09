@@ -1,18 +1,32 @@
 import "./App.css";
+import { ChakraProvider, CircularProgress } from "@chakra-ui/react";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { Posts } from "./Posts";
+import { Posts } from "./components/Posts";
 import { Suspense } from "react";
 import { queryClient } from "./utils/queryClient";
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Posts />
-      </Suspense>
-      <ReactQueryDevtools buttonPosition="bottom-left" />
-    </QueryClientProvider>
+    <ChakraProvider>
+      <QueryClientProvider client={queryClient}>
+        <Suspense
+          fallback={
+            <CircularProgress
+              isIndeterminate
+              position={"fixed"}
+              top={"50%"}
+              left={"50%"}
+              transform={"translate(-50%, -50%)"}
+              color={"#c4c4c4"}
+            />
+          }
+        >
+          <Posts />
+        </Suspense>
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+    </ChakraProvider>
   );
 }
 
