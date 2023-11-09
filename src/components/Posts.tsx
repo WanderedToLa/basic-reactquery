@@ -25,8 +25,7 @@ export function Posts() {
   const [selectedPost, setSelectedPost] = useState<PostsType | null>(null);
   const { posts } = usePosts(currentPage);
 
-  const queryClient = useQueryClient();
-
+  // const queryClient = useQueryClient();
   // useEffect(() => {
   //   if (currentPage < maxPostPage) {
   //     const nextPage = currentPage + 1;
