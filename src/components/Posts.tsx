@@ -51,7 +51,7 @@ export function Posts() {
       </ul>
       <div className="pages">
         <Button
-          disabled={currentPage <= 1}
+          isDisabled={currentPage <= 1}
           onClick={() => {
             setCurrentPage((prev) => prev - 1);
           }}
@@ -60,7 +60,7 @@ export function Posts() {
         </Button>
         <span>Page {currentPage}</span>
         <Button
-          disabled={currentPage >= maxPostPage}
+          isDisabled={currentPage >= maxPostPage}
           onClick={() => {
             setCurrentPage((prev) => prev + 1);
           }}
